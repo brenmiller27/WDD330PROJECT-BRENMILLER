@@ -21,3 +21,10 @@ export function setClick(selector, callback) {
   });
   qs(selector).addEventListener("click", callback);
 }
+
+function RenderListWithTemplate (templateFn, parentElement, list, position = "afterbegin", clear = false) {
+
+  const htmlStrings = list.map(productCardTemplate);
+  this.listElement.insertAdjacentHTML('afterbegin', htmlStrings.join(''));
+
+}
