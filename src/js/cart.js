@@ -7,7 +7,7 @@ function renderCartContents() {
 }
 
 function cartItemTemplate(item) {
-  const newItem = `<li class="cart-card divider">
+  const newItem = <li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
       src="${item.Image}"
@@ -20,9 +20,18 @@ function cartItemTemplate(item) {
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
   <p class="cart-card__quantity">qty: 1</p>
   <p class="cart-card__price">$${item.FinalPrice}</p>
-</li>`;
+</li>;
 
   return newItem;
 }
 
 renderCartContents();
+
+if (document.getElementsByClassName('cart-items')[0].hasChildNodes()){
+  alert('Thanks!')
+  // ... other code here
+}   
+else {
+  alert("There is nothing in your cart!");
+}
+<div class="cart-items"></div>
