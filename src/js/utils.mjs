@@ -22,10 +22,18 @@ export function setClick(selector, callback) {
   qs(selector).addEventListener("click", callback);
 }
 
-function RenderListWithTemplate (templateFn, parentElement, list, position = "afterbegin", clear = false) {
+export function RenderListWithTemplate (templateFn, parentElement, list, position = "afterbegin", clear = false) {
 
   const htmlStrings = list.map(productCardTemplate);
+
   this.listElement.insertAdjacentHTML('afterbegin', htmlStrings.join(''));
+
+  if(clear) {
+    parentElement.innerhtml ="";
+  }
+
+  parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
+
 
 }
 
@@ -47,7 +55,7 @@ export async function loadTemplate(path) {
   return template;
 }
 
-export async function loadHeaderFooter() {
+/*export async function loadHeaderFooter() {
 
   const headerTemplate = await loadTemplate("../partials/header.html");
 
@@ -60,6 +68,16 @@ export async function loadHeaderFooter() {
   const footerElement = document.querySelector("#main-footer");
 
   renderWithTemplate(footerTemplate, footerElement);
+
+}
+*/
+
+export function getParams(Params) {
+
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const product = urlParams.get('product');
+  return product;
 
 }
 
